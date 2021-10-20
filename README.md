@@ -1,7 +1,5 @@
 # CommandManager
-Console Command Manager
-
-Answers simple questions/commands:
+Console Command Manager, answers simple questions/commands:
 * what time is it now?
 * what's your name?
 * how are you?
