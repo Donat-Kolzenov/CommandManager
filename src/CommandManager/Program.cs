@@ -4,7 +4,7 @@ namespace CommandLauncher
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var user = new ConsoleUser();
             var console = new Console();
