@@ -7,10 +7,10 @@
         public GetMood(CommandManager manager)
         {
             _manager = manager;
-            Command.Set.Add(this);
-            this.Keyword = "как дела";
+            this.Keyword = "Как дела";
         }
 
-        public override string Execute() => $"I'm {_manager.Mood}";
+        public override string Execute() =>
+            _manager.Mood;
     }
 }

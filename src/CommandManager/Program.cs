@@ -6,20 +6,34 @@ namespace CommandLauncher
     {
         static void Main(string[] args)
         {
-            var user = new User();
-            user.EnterMessage();
-
-            var interpreter = new MessageInterpreter();
-
-            string alias = "Boris";
-            string mood = "Good";
-            var manager = new CommandManager(alias, mood);
-
-            Command command = interpreter.Match(user.Message);
-            manager.ExecuteCommand(command);
-
+            var user = new ConsoleUser();
             var console = new Console();
-            console.ShowAnswer(manager);
+            var manager = new CommandManager(
+                    IManagerState.alias,
+                    IManagerState.mood);
+
+            var database = new Commandbase(manager);
+            var interpreter = new MessageInterpreter(database);
+
+            new Welcome(console).Execute();
+            while (true)
+            {
+                user.EnterMessage();
+                interpreter.Match(user.Message);
+                manager.ExecuteCommand(interpreter.Command);
+                console.ShowMessage(manager.Answer);
+
+                if (interpreter.Command.GetType()
+                    .Equals(new Terminate().GetType()))
+                    break;
+            }
+        }
+
+        interface IManagerState
+        {
+            static readonly string alias = "Алекс";
+
+            static readonly string mood = "У меня всё отлично";
         }
     }
 }

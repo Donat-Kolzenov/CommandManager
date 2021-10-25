@@ -16,6 +16,7 @@ namespace Manager
         public void ExecuteCommand(Command command)
         {
             Answer = command.Execute();
+            MessageHistory.Add(new Message(Answer));
         }
     }
 }

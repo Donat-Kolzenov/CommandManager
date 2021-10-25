@@ -7,10 +7,10 @@
         public GetWorkTime(Manager manager)
         {
             _manager = manager;
-            Command.Set.Add(this);
-            this.Keyword = "сколько времени ты работаешь";
+            this.Keyword = "Сколько времени ты работаешь";
         }
 
-        public override string Execute() => _manager.Stopwatch.ToString();
+        public override string Execute() =>
+            "Время работы: " + _manager.Stopwatch.Elapsed.ToString();
     }
 }

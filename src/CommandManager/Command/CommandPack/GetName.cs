@@ -7,10 +7,10 @@
         public GetName(Manager manager)
         {
             _manager = manager;
-            Command.Set.Add(this);
-            this.Keyword = "как тебя зовут";
+            this.Keyword = "Как тебя зовут";
         }
 
-        public override string Execute() => $"My name is {_manager.Alias}";
+        public override string Execute() =>
+            "Меня зовут " + _manager.Alias;
     }
 }
